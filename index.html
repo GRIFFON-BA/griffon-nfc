@@ -22,13 +22,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Clean White Header - Fail-safe voor logo rendering */
+        /* Verbeterde Header voor Mobiele Rendering */
         header {
             width: 100%;
             background-color: var(--white);
-            padding: 20px 0;
+            padding: 15px 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,24 +38,27 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            min-height: 70px; /* Garandeert ruimte voor het logo */
         }
 
+        /* Fix voor Mobiel: Forceer breedte en hoogte */
         .logo-img {
             height: 45px;
-            width: auto;
+            width: 180px; /* Vaste breedte helpt mobiele browsers bij het berekenen */
             display: block;
+            object-fit: contain; /* Zorgt dat het logo niet vervormt */
         }
 
         .container {
             width: 90%;
             max-width: 420px;
-            margin-top: 30px;
+            margin-top: 25px;
             padding-bottom: 60px;
         }
 
         .intro-text {
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             margin-bottom: 25px;
             color: #444;
             font-weight: 700;
@@ -62,7 +66,7 @@
             letter-spacing: 1.5px;
         }
 
-        /* Knoppen met Blauwe Accent-balk */
+        /* Knoppen Design */
         .link-card {
             background: var(--white);
             display: flex;
@@ -75,15 +79,14 @@
             font-weight: 700;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             border-left: 6px solid var(--griffon-blue);
-            transition: 0.2s;
+            transition: background-color 0.2s;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .link-card:active {
-            background-color: #f9f9f9;
-            transform: scale(0.98);
+            background-color: #f0f0f0;
         }
 
-        /* Contact knop met Rood Accent */
         .contact-card {
             border-left-color: var(--griffon-red);
             color: var(--griffon-red);
@@ -99,12 +102,13 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        h2 { color: var(--griffon-blue); font-size: 1.3rem; margin-top: 0; border-bottom: 2px solid var(--bg-grey); padding-bottom: 10px;}
+        h2 { color: var(--griffon-blue); font-size: 1.3rem; margin: 0 0 15px 0; border-bottom: 2px solid var(--bg-grey); padding-bottom: 10px;}
 
         input, select, textarea {
             width: 100%; padding: 15px; margin-bottom: 12px;
             border: 1px solid #ddd; border-radius: 4px; font-size: 16px;
             box-sizing: border-box;
+            font-family: inherit;
         }
 
         .submit-btn {
@@ -113,7 +117,7 @@
             border-radius: 4px; cursor: pointer;
         }
 
-        footer { text-align: center; font-size: 0.7rem; color: #999; margin-top: 40px; }
+        footer { text-align: center; font-size: 0.75rem; color: #999; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -142,9 +146,9 @@
     <div id="contact-form-container">
         <h2 id="form-header">Contact Request</h2>
         <form action="https://formsubmit.co/info@boltonadhesives.com" method="POST">
-            <input type="text" name="name" id="field-name" placeholder="Name" autocomplete="name" required>
-            <input type="email" name="email" id="field-email" placeholder="Email" autocomplete="email" required>
-            <input type="tel" name="phone" id="field-phone" placeholder="Phone" autocomplete="tel" required>
+            <input type="text" name="name" id="field-name" placeholder="Name" required>
+            <input type="email" name="email" id="field-email" placeholder="Email" required>
+            <input type="tel" name="phone" id="field-phone" placeholder="Phone" required>
             <select name="request_type" required>
                 <option value="" disabled selected id="opt-select">Please select...</option>
                 <option value="Information" id="opt-info">Receive information</option>
@@ -209,6 +213,7 @@
         document.getElementById('links-menu').style.display = 'none';
         document.getElementById('intro').style.display = 'none';
         document.getElementById('contact-form-container').style.display = 'block';
+        window.scrollTo(0,0);
     }
 </script>
 </body>
