@@ -25,11 +25,11 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Verbeterde Header voor Mobiele Rendering */
+        /* Verbeterde Header: Meer padding voor een groter logo */
         header {
             width: 100%;
             background-color: var(--white);
-            padding: 15px 0;
+            padding: 25px 0; /* Verhoogd voor meer witruimte rondom logo */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -38,15 +38,16 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            min-height: 70px; /* Garandeert ruimte voor het logo */
+            min-height: 90px; /* Aangepast aan groter logo */
         }
 
-        /* Fix voor Mobiel: Forceer breedte en hoogte */
+        /* Logo Styling: Groter en duidelijker op mobiel */
         .logo-img {
-            height: 45px;
-            width: 180px; /* Vaste breedte helpt mobiele browsers bij het berekenen */
+            height: 70px;    /* Verhoogd naar 70px voor betere zichtbaarheid */
+            width: auto;     /* Auto breedte om verhoudingen te bewaren */
+            min-width: 200px; /* Forceert rendering op mobiele browsers */
             display: block;
-            object-fit: contain; /* Zorgt dat het logo niet vervormt */
+            object-fit: contain;
         }
 
         .container {
