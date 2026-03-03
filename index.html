@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Griffon - Professional Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --griffon-blue: #0054a6;
-            --griffon-red: #e30613; /* De officiële PMS-match voor web */
+            --griffon-red: #e30613; /* Officiële Griffon Rood */
             --bg-grey: #f2f2f2;
-            --text-dark: #333333;
             --white: #ffffff;
+            --text-main: #333;
         }
 
         body {
@@ -19,50 +19,54 @@
             background-color: var(--bg-grey);
             margin: 0;
             padding: 0;
-            color: var(--text-dark);
             display: flex;
             flex-direction: column;
             align-items: center;
+            color: var(--text-main);
         }
 
-        /* Header nu in Griffon Rood */
+        /* HET CSS MODEL: Rode Header */
         header {
             width: 100%;
             background-color: var(--griffon-red);
             padding: 20px 0;
             display: flex;
             justify-content: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
-        .logo {
-            height: 50px;
+        /* HET LOGO: Geforceerd wit via CSS Filter */
+        .griffon-logo-img {
+            height: 45px; /* Optimale hoogte voor mobiel */
             width: auto;
-            /* Filter om een donker logo wit te maken op de rode achtergrond */
-            filter: brightness(0) invert(1); 
+            display: block;
+            /* Maakt elk gekleurd SVG bestand 100% wit */
+            filter: brightness(0) invert(1);
+            -webkit-filter: brightness(0) invert(1);
         }
 
         .container {
             width: 90%;
-            max-width: 450px;
+            max-width: 420px;
             margin-top: 25px;
-            padding-bottom: 50px;
+            padding-bottom: 60px;
         }
 
         .intro-text {
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             margin-bottom: 20px;
-            color: #555;
+            color: #777;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
         }
 
-        /* De blauwe balkjes stijl voor de knoppen */
+        /* Knoppen met de Blauwe Accent-balk */
         .link-card {
             background: var(--white);
             display: flex;
@@ -73,19 +77,19 @@
             margin-bottom: 12px;
             border-radius: 4px;
             font-weight: 700;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-            border-left: 6px solid var(--griffon-blue); /* De blauwe balkjes */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--griffon-blue);
             transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .link-card:active {
-            transform: scale(0.98);
-            background-color: #f9f9f9;
+            transform: scale(0.97);
+            background-color: #fafafa;
         }
 
-        /* Contact knop blijft speciaal */
+        /* Contact knop met Rood Accent */
         .contact-card {
-            background-color: var(--white);
             border-left-color: var(--griffon-red);
             color: var(--griffon-red);
             margin-top: 20px;
@@ -95,54 +99,61 @@
         #contact-form-container {
             background: var(--white);
             padding: 25px;
-            border-radius: 4px;
+            border-radius: 6px;
             display: none;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.3s ease;
         }
 
-        h2 {
-            color: var(--griffon-blue);
-            font-size: 1.3rem;
-            margin-top: 0;
-            border-bottom: 2px solid var(--bg-grey);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 { 
+            color: var(--griffon-blue); 
+            font-size: 1.2rem; 
+            margin-top: 0; 
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
             padding-bottom: 10px;
         }
 
         input, select, textarea {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 2px;
-            font-size: 16px;
-            background-color: #fcfcfc;
+            width: 100%; 
+            padding: 15px; 
+            margin-bottom: 12px;
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            font-size: 16px; /* Voorkomt inzoomen op iPhone */
             box-sizing: border-box;
+            background: #fdfdfd;
         }
 
         .submit-btn {
-            background-color: var(--griffon-red);
-            color: white;
+            background-color: var(--griffon-red); 
+            color: white; 
             border: none;
-            width: 100%;
-            padding: 16px;
-            font-weight: 700;
+            width: 100%; 
+            padding: 16px; 
+            font-weight: 700; 
             text-transform: uppercase;
-            border-radius: 2px;
+            border-radius: 4px;
             cursor: pointer;
         }
 
-        footer {
-            text-align: center;
-            font-size: 0.7rem;
-            color: #aaa;
-            margin-top: 30px;
+        footer { 
+            text-align: center; 
+            font-size: 0.7rem; 
+            color: #aaa; 
+            margin-top: 40px; 
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo-griffon.svg" alt="Griffon Logo" class="logo" onerror="this.src='https://www.griffon.eu/etc.clientlibs/bolton-adhesives/clientlibs/clientlib-site/resources/images/griffon-logo.svg'">
+    <img src="griffon.svg" alt="Griffon Logo" class="griffon-logo-img">
 </header>
 
 <div class="container">
@@ -167,9 +178,9 @@
             <input type="tel" name="phone" id="field-phone" placeholder="Telefoon" autocomplete="tel" required>
             
             <select name="request_type" required>
-                <option value="" disabled selected id="opt-select">Wat wilt u ontvangen?</option>
-                <option value="Information" id="opt-info">Informatie</option>
-                <option value="Call-back" id="opt-call">Contactverzoek</option>
+                <option value="" disabled selected id="opt-select">Maak een keuze...</option>
+                <option value="Information" id="opt-info">Informatie ontvangen</option>
+                <option value="Call-back" id="opt-call">Terugbelverzoek</option>
             </select>
             
             <textarea name="message" rows="3" placeholder="Bericht..."></textarea>
@@ -184,34 +195,9 @@
 </div>
 
 <script>
-    // Meertaligheid
     const translations = {
-        nl: {
-            intro: "Professionele Oplossingen",
-            home: "Website Homepage",
-            folder: "Folders & Catalogi",
-            parent: "Bolton Adhesives",
-            contact: "Neem contact met mij op",
-            formH: "Contactverzoek",
-            optSelect: "Maak een keuze...",
-            optInfo: "Informatie ontvangen",
-            optCall: "Verzoek om contact",
-            btnSend: "Verstuur aanvraag",
-            pName: "Naam", pEmail: "E-mailadres", pPhone: "Telefoonnummer"
-        },
-        en: {
-            intro: "Professional Solutions",
-            home: "Website Homepage",
-            folder: "Leaflets & Catalogs",
-            parent: "Bolton Adhesives",
-            contact: "Contact me",
-            formH: "Contact Request",
-            optSelect: "Please select...",
-            optInfo: "Receive information",
-            optCall: "Request a call-back",
-            btnSend: "Send request",
-            pName: "Name", pEmail: "Email", pPhone: "Phone number"
-        }
+        nl: { intro: "Professionele Oplossingen", home: "Website Homepage", folder: "Folders & Catalogi", parent: "Bolton Adhesives", contact: "Neem contact met mij op", formH: "Hoe kunnen we helpen?", optSelect: "Maak een keuze...", optInfo: "Informatie ontvangen", optCall: "Verzoek om contact", btnSend: "Verstuur aanvraag", pName: "Naam", pEmail: "E-mailadres", pPhone: "Telefoonnummer" },
+        en: { intro: "Professional Solutions", home: "Website Homepage", folder: "Leaflets & Catalogs", parent: "Bolton Adhesives", contact: "Contact me", formH: "Contact Request", optSelect: "Please select...", optInfo: "Receive information", optCall: "Request a call-back", btnSend: "Send request", pName: "Name", pEmail: "Email", pPhone: "Phone number" }
     };
 
     const userLang = navigator.language.substring(0, 2);
@@ -235,6 +221,7 @@
         document.getElementById('links-menu').style.display = 'none';
         document.getElementById('intro').style.display = 'none';
         document.getElementById('contact-form-container').style.display = 'block';
+        window.scrollTo(0,0);
     }
 </script>
 
