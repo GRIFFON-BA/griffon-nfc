@@ -8,7 +8,7 @@
     <style>
         :root {
             --griffon-blue: #0054a6;
-            --griffon-red: #e30613;
+            --griffon-red: #e30613; /* De officiële PMS-match voor web */
             --bg-grey: #f2f2f2;
             --text-dark: #333333;
             --white: #ffffff;
@@ -25,82 +25,84 @@
             align-items: center;
         }
 
-        /* Header zoals op de website */
+        /* Header nu in Griffon Rood */
         header {
             width: 100%;
-            background-color: var(--white);
-            padding: 15px 0;
+            background-color: var(--griffon-red);
+            padding: 20px 0;
             display: flex;
             justify-content: center;
-            border-bottom: 3px solid var(--griffon-blue);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .logo {
-            height: 45px;
+            height: 50px;
             width: auto;
+            /* Filter om een donker logo wit te maken op de rode achtergrond */
+            filter: brightness(0) invert(1); 
         }
 
         .container {
             width: 90%;
             max-width: 450px;
-            margin-top: 30px;
+            margin-top: 25px;
             padding-bottom: 50px;
         }
 
         .intro-text {
             text-align: center;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-            color: #666;
-            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            color: #555;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
-        /* Knoppen in de stijl van Griffon Cards */
+        /* De blauwe balkjes stijl voor de knoppen */
         .link-card {
             background: var(--white);
             display: flex;
             align-items: center;
             text-decoration: none;
             color: var(--griffon-blue);
-            padding: 20px;
-            margin-bottom: 15px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
             border-radius: 4px;
             font-weight: 700;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border-left: 5px solid var(--griffon-blue);
-            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            border-left: 6px solid var(--griffon-blue); /* De blauwe balkjes */
+            transition: all 0.2s ease;
         }
 
         .link-card:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            transform: scale(0.98);
+            background-color: #f9f9f9;
         }
 
-        /* Accent voor de contact knop */
+        /* Contact knop blijft speciaal */
         .contact-card {
+            background-color: var(--white);
             border-left-color: var(--griffon-red);
             color: var(--griffon-red);
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
-        /* Formulier styling in Griffon-stijl */
+        /* Formulier sectie */
         #contact-form-container {
             background: var(--white);
             padding: 25px;
             border-radius: 4px;
             display: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
 
         h2 {
             color: var(--griffon-blue);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-top: 0;
             border-bottom: 2px solid var(--bg-grey);
             padding-bottom: 10px;
@@ -108,12 +110,13 @@
 
         input, select, textarea {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             margin-bottom: 15px;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 2px;
             font-size: 16px;
-            background-color: #fafafa;
+            background-color: #fcfcfc;
+            box-sizing: border-box;
         }
 
         .submit-btn {
@@ -121,18 +124,18 @@
             color: white;
             border: none;
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             font-weight: 700;
             text-transform: uppercase;
-            cursor: pointer;
             border-radius: 2px;
+            cursor: pointer;
         }
 
         footer {
             text-align: center;
-            font-size: 0.75rem;
-            color: #999;
-            margin-top: 20px;
+            font-size: 0.7rem;
+            color: #aaa;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -181,6 +184,7 @@
 </div>
 
 <script>
+    // Meertaligheid
     const translations = {
         nl: {
             intro: "Professionele Oplossingen",
@@ -213,7 +217,6 @@
     const userLang = navigator.language.substring(0, 2);
     const content = translations[userLang] || translations.en;
 
-    // Vertaal elementen
     document.getElementById('intro').innerText = content.intro;
     document.getElementById('btn-home').innerText = content.home;
     document.getElementById('btn-folder').innerText = content.folder;
@@ -224,8 +227,6 @@
     document.getElementById('opt-info').innerText = content.optInfo;
     document.getElementById('opt-call').innerText = content.optCall;
     document.getElementById('btn-submit').innerText = content.btnSend;
-    
-    // Placeholder vertalingen
     document.getElementById('field-name').placeholder = content.pName;
     document.getElementById('field-email').placeholder = content.pEmail;
     document.getElementById('field-phone').placeholder = content.pPhone;
