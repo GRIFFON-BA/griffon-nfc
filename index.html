@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GRIFFON - The Choice of the Pro</title>
+    <title>Griffon - The Choice of the Pro</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --griffon-blue: #0054a6;
             --griffon-red: #e30613;
-            --bg-grey: #f2f2f2;
+            --bg-grey: #f4f4f4;
             --white: #ffffff;
+            --text-main: #333;
         }
 
         body {
@@ -23,42 +24,42 @@
             align-items: center;
         }
 
-        /* De Rode Header */
+        /* Clean White Header - Fail-safe voor logo rendering */
         header {
             width: 100%;
-            background-color: var(--griffon-red);
+            background-color: var(--white);
             padding: 20px 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border-bottom: 4px solid var(--griffon-blue);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        /* SVG Logo Styling */
-        .griffon-logo-svg {
+        .logo-img {
             height: 45px;
             width: auto;
-            fill: var(--white); /* Dwingt de kleur naar wit */
+            display: block;
         }
 
         .container {
             width: 90%;
             max-width: 420px;
-            margin-top: 25px;
+            margin-top: 30px;
             padding-bottom: 60px;
         }
 
         .intro-text {
             text-align: center;
-            font-size: 0.75rem;
-            margin-bottom: 20px;
-            color: #777;
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+            color: #444;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
 
         /* Knoppen met Blauwe Accent-balk */
@@ -74,20 +75,22 @@
             font-weight: 700;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             border-left: 6px solid var(--griffon-blue);
-            transition: all 0.2s ease;
+            transition: 0.2s;
         }
 
         .link-card:active {
-            transform: scale(0.97);
+            background-color: #f9f9f9;
+            transform: scale(0.98);
         }
 
+        /* Contact knop met Rood Accent */
         .contact-card {
             border-left-color: var(--griffon-red);
             color: var(--griffon-red);
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
-        /* Formulier styling */
+        /* Formulier */
         #contact-form-container {
             background: var(--white);
             padding: 25px;
@@ -96,64 +99,59 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        h2 { color: var(--griffon-blue); font-size: 1.2rem; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px;}
+        h2 { color: var(--griffon-blue); font-size: 1.3rem; margin-top: 0; border-bottom: 2px solid var(--bg-grey); padding-bottom: 10px;}
 
         input, select, textarea {
             width: 100%; padding: 15px; margin-bottom: 12px;
-            border: 1px solid #ccc; border-radius: 4px; font-size: 16px;
+            border: 1px solid #ddd; border-radius: 4px; font-size: 16px;
             box-sizing: border-box;
         }
 
         .submit-btn {
             background-color: var(--griffon-red); color: white; border: none;
-            width: 100%; padding: 16px; font-weight: 700; text-transform: uppercase;
+            width: 100%; padding: 18px; font-weight: 700; text-transform: uppercase;
             border-radius: 4px; cursor: pointer;
         }
 
-        footer { text-align: center; font-size: 0.7rem; color: #aaa; margin-top: 40px; }
+        footer { text-align: center; font-size: 0.7rem; color: #999; margin-top: 40px; }
     </style>
 </head>
 <body>
 
 <header>
-    <svg class="griffon-logo-svg" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
-        <path d="M72.5,95.7c-12.8,0-23.7-4.6-32.1-13.4C32,73.5,27.8,62.2,27.8,48.5c0-13.6,4.3-25,12.8-33.8C49,5.8,60.1,1.3,73,1.3c11.7,0,21.8,4.1,29.8,12c2,2,3.8,4.3,5.3,6.8l-15.6,8.5c-3.6-5.8-9.1-8.9-18-8.9c-8,0-14.7,2.8-19.8,8.4c-5.4,5.9-8.1,13-8.1,20.9c0,8,2.7,14.9,8.1,20.7c5,5.4,11.5,8.2,19.3,8.2c9.2,0,15.7-3.9,19-11.4l15.8,7.3C102.3,86.5,89.5,95.7,72.5,95.7z"/>
-        <path d="M132.8,93.5h-18.4V1.8h18.4V93.5z"/>
-        <path d="M198.5,93.5h-18.4V56.3h-31.5v37.2H130V1.8h18.4V40.2h31.5V1.8h18.4V93.5z"/>
-        <path d="M255.4,17.4V1.8H210v91.7h18.4V54.8h21.4V40.1h-21.4V17.4H255.4z"/>
-        <path d="M308.2,17.4V1.8h-45.4v91.7h18.4V54.8h21.4V40.1h-21.4V17.4H308.2z"/>
-        <path d="M374.8,47.8c0,14.2-4.1,25.8-12.3,34.4c-8.1,8.6-18.9,12.9-32.3,12.9c-13.4,0-24.2-4.3-32.3-12.9c-8.2-8.6-12.3-20.2-12.3-34.4c0-14.1,4.1-25.7,12.3-34.4c8.1-8.6,18.9-13,32.3-13c13.4,0,24.2,4.4,32.3,13C370.7,22.1,374.8,33.7,374.8,47.8z M356.2,47.8c0-10.1-2.4-18.1-7.2-24c-4.3-5.2-10-7.8-17-7.8c-7.1,0-12.7,2.6-17,7.8c-4.8,5.9-7.2,13.9-7.2,24c0,10.1,2.4,18.1,7.2,24c4.3,5.2,10,7.8,17,7.8c7.1,0,12.8-2.6,17-7.8C353.8,65.9,356.2,57.9,356.2,47.8z"/>
-        <path d="M447,93.5V1.8h-18.1l-36.4,51.8V1.8H374v91.7h18.1l36.5-51.8v51.8H447z"/>
-    </svg>
+    <img src="griffon.svg" alt="Griffon Logo" class="logo-img">
 </header>
 
 <div class="container">
-    <div id="intro" class="intro-text">Professional Solutions</div>
+    <div id="intro" class="intro-text">The Choice of the Pro</div>
 
     <div id="links-menu">
         <a href="https://www.griffon.eu" class="link-card" id="btn-home">Website Homepage</a>
         <a href="https://www.griffon.eu/en-en/leaflets-catalogs" class="link-card" id="btn-folder">Leaflets & Catalogs</a>
+        
+        <a href="https://www.youtube.com/channel/UCyhW1zedUwzmZie2_e0W9KA" class="link-card">Griffon Global - YouTube</a>
+        <a href="https://www.facebook.com/GriffonBA" class="link-card">Griffon | Facebook</a>
         <a href="https://www.instagram.com/griffonglobal/" class="link-card">Instagram</a>
-        <a href="https://www.facebook.com/GriffonBA" class="link-card">Facebook</a>
-        <a href="https://www.youtube.com/channel/UCyhW1zedUwzmZie2_e0W9KA" class="link-card">YouTube</a>
+        <a href="https://www.linkedin.com/company/bolton/posts/?feedView=all" class="link-card">Linkedin</a>
+        
         <a href="https://www.boltonadhesives.com" class="link-card" id="btn-parent">Bolton Adhesives</a>
         
         <a href="#" class="link-card contact-card" id="btn-contact" onclick="showForm()">Contact Me</a>
     </div>
 
     <div id="contact-form-container">
-        <h2 id="form-header">Contactverzoek</h2>
+        <h2 id="form-header">Contact Request</h2>
         <form action="https://formsubmit.co/info@boltonadhesives.com" method="POST">
-            <input type="text" name="name" id="field-name" placeholder="Naam" autocomplete="name" required>
-            <input type="email" name="email" id="field-email" placeholder="E-mail" autocomplete="email" required>
-            <input type="tel" name="phone" id="field-phone" placeholder="Telefoon" autocomplete="tel" required>
+            <input type="text" name="name" id="field-name" placeholder="Name" autocomplete="name" required>
+            <input type="email" name="email" id="field-email" placeholder="Email" autocomplete="email" required>
+            <input type="tel" name="phone" id="field-phone" placeholder="Phone" autocomplete="tel" required>
             <select name="request_type" required>
-                <option value="" disabled selected id="opt-select">Maak een keuze...</option>
-                <option value="Information" id="opt-info">Informatie ontvangen</option>
-                <option value="Call-back" id="opt-call">Terugbelverzoek</option>
+                <option value="" disabled selected id="opt-select">Please select...</option>
+                <option value="Information" id="opt-info">Receive information</option>
+                <option value="Call-back" id="opt-call">Request a call-back</option>
             </select>
-            <textarea name="message" rows="3" placeholder="Bericht..."></textarea>
-            <button type="submit" class="submit-btn" id="btn-submit">Verzenden</button>
+            <textarea name="message" rows="3" placeholder="Message..."></textarea>
+            <button type="submit" class="submit-btn" id="btn-submit">Send Request</button>
         </form>
     </div>
 
@@ -162,8 +160,32 @@
 
 <script>
     const translations = {
-        nl: { intro: "Professionele Oplossingen", home: "Website Homepage", folder: "Folders & Catalogi", parent: "Bolton Adhesives", contact: "Neem contact met mij op", formH: "Hoe kunnen we helpen?", optSelect: "Maak een keuze...", optInfo: "Informatie ontvangen", optCall: "Verzoek om contact", btnSend: "Verstuur aanvraag", pName: "Naam", pEmail: "E-mailadres", pPhone: "Telefoonnummer" },
-        en: { intro: "Professional Solutions", home: "Website Homepage", folder: "Leaflets & Catalogs", parent: "Bolton Adhesives", contact: "Contact me", formH: "Contact Request", optSelect: "Please select...", optInfo: "Receive information", optCall: "Request a call-back", btnSend: "Send request", pName: "Name", pEmail: "Email", pPhone: "Phone number" }
+        nl: { 
+            intro: "The Choice of the Pro", 
+            home: "Website Homepage", 
+            folder: "Folders & Catalogi", 
+            parent: "Bolton Adhesives", 
+            contact: "Neem contact met mij op", 
+            formH: "Hoe kunnen we helpen?", 
+            optSelect: "Maak een keuze...", 
+            optInfo: "Informatie ontvangen", 
+            optCall: "Verzoek om contact", 
+            btnSend: "Verstuur aanvraag", 
+            pName: "Naam", pEmail: "E-mailadres", pPhone: "Telefoonnummer" 
+        },
+        en: { 
+            intro: "The Choice of the Pro", 
+            home: "Website Homepage", 
+            folder: "Leaflets & Catalogs", 
+            parent: "Bolton Adhesives", 
+            contact: "Contact me", 
+            formH: "Contact Request", 
+            optSelect: "Please select...", 
+            optInfo: "Receive information", 
+            optCall: "Request a call-back", 
+            btnSend: "Send request", 
+            pName: "Name", pEmail: "Email", pPhone: "Phone number" 
+        }
     };
 
     const userLang = navigator.language.substring(0, 2);
