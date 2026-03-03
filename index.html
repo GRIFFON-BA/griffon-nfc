@@ -11,6 +11,7 @@
             --griffon-red: #e30613;
             --white: #ffffff;
             --light-grey: #f4f4f4;
+            --dark-grey: #333;
         }
 
         body {
@@ -19,21 +20,28 @@
             margin: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: #333;
+            padding: 20px 0;
+            color: var(--dark-grey);
         }
 
         .container {
-            width: 100%;
+            width: 90%;
             max-width: 400px;
-            padding: 20px;
             text-align: center;
         }
 
+        .header {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
         .logo {
-            width: 180px;
-            margin-bottom: 30px;
+            width: 100%;
+            max-width: 220px;
+            height: auto;
         }
 
         .link-button {
@@ -41,97 +49,155 @@
             background-color: var(--white);
             color: var(--griffon-blue);
             text-decoration: none;
-            padding: 15px;
+            padding: 16px;
             margin-bottom: 12px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
             border: 2px solid var(--griffon-blue);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
 
-        .link-button:active {
-            transform: scale(0.98);
-            background-color: var(--griffon-blue);
-            color: var(--white);
+        /* Formulier Styling */
+        #contact-form-container {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: left;
+            display: none; /* Verborgen tot klik */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .contact-btn {
+        .form-title {
+            color: var(--griffon-blue);
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px; /* Voorkomt inzoomen op iOS */
+        }
+
+        .submit-btn {
             background-color: var(--griffon-red);
             color: white;
             border: none;
-            margin-top: 20px;
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        footer {
-            margin-top: 30px;
-            font-size: 0.8rem;
-            color: #777;
+        .show-form-btn {
+            background-color: var(--griffon-red);
+            color: white;
+            border: none;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <img src="https://www.griffon.eu/etc.clientlibs/bolton-adhesives/clientlibs/clientlib-site/resources/images/griffon-logo.svg" alt="Griffon Logo" class="logo">
+    <div class="header">
+        <img src="https://www.griffon.eu/etc.clientlibs/bolton-adhesives/clientlibs/clientlib-site/resources/images/griffon-logo.svg" alt="Griffon Logo" class="logo">
+    </div>
     
-    <div id="links-container">
-        </div>
+    <div id="links-menu">
+        <a href="https://www.griffon.eu" class="link-button" id="btn-home">Website Homepage</a>
+        <a href="https://www.griffon.eu/en-en/leaflets-catalogs" class="link-button" id="btn-folder">Leaflets & Catalogs</a>
+        <a href="https://www.instagram.com/griffon_international/" class="link-button">Instagram</a>
+        <a href="https://www.facebook.com/GriffonInternational/" class="link-button">Facebook</a>
+        <a href="https://www.tiktok.com/@griffon_international" class="link-button">TikTok</a>
+        <a href="https://www.boltonadhesives.com" class="link-button" id="btn-parent">Bolton Adhesives</a>
+        
+        <button class="link-button show-form-btn" id="btn-contact" onclick="showForm()">Contact Me</button>
+    </div>
 
-    <footer>
-        Part of Bolton Adhesives
-    </footer>
+    <div id="contact-form-container">
+        <span class="form-title" id="form-header">Contactverzoek</span>
+        <form action="https://formsubmit.co/info@boltonadhesives.com" method="POST">
+            <input type="text" name="name" placeholder="Naam" autocomplete="name" required>
+            <input type="email" name="email" placeholder="E-mailadres" autocomplete="email" required>
+            <input type="tel" name="phone" placeholder="Telefoonnummer" autocomplete="tel" required>
+            
+            <select name="request_type" required>
+                <option value="" disabled selected id="opt-select">Wat wilt u ontvangen?</option>
+                <option value="Information" id="opt-info">Informatie ontvangen</option>
+                <option value="Call-back" id="opt-call">Verzoek om contact</option>
+                <option value="Sample" id="opt-sample">Productmonster aanvragen</option>
+            </select>
+            
+            <textarea name="message" rows="4" placeholder="Uw bericht..."></textarea>
+            
+            <input type="hidden" name="_next" value="window.location.href">
+            <button type="submit" class="submit-btn" id="btn-submit">Verzenden</button>
+        </form>
+    </div>
 </div>
 
 <script>
-    // Meertalige content mapping
     const translations = {
         nl: {
-            homepage: "Website Homepage",
-            folder: "Product Folders",
+            home: "Website Homepage",
+            folder: "Folders & Catalogi",
             parent: "Bolton Adhesives",
             contact: "Neem contact met mij op",
-            subject: "Contactverzoek via NFC Tag"
+            formH: "Hoe kunnen we u helpen?",
+            optSelect: "Maak een keuze...",
+            optInfo: "Informatie ontvangen",
+            optCall: "Verzoek om contact",
+            btnSend: "Verstuur aanvraag"
         },
         en: {
-            homepage: "Website Homepage",
-            folder: "Product Catalogues",
+            home: "Website Homepage",
+            folder: "Leaflets & Catalogs",
             parent: "Bolton Adhesives",
             contact: "Contact me",
-            subject: "Contact request via NFC Tag"
+            formH: "How can we help you?",
+            optSelect: "Please select...",
+            optInfo: "Receive information",
+            optCall: "Request a call-back",
+            btnSend: "Send request"
         },
         de: {
-            homepage: "Website Startseite",
-            folder: "Produktkataloge",
+            home: "Website Startseite",
+            folder: "Prospekte & Kataloge",
             parent: "Bolton Adhesives",
             contact: "Kontaktieren Sie mich",
-            subject: "Kontaktanfrage via NFC Tag"
+            formH: "Wie können wir helfen?",
+            optSelect: "Bitte wählen...",
+            optInfo: "Informationen erhalten",
+            optCall: "Rückrufwunsch",
+            btnSend: "Anfrage senden"
         }
     };
 
-    // Bepaal taal (fallback naar Engels)
     const userLang = navigator.language.substring(0, 2);
     const content = translations[userLang] || translations.en;
 
-    const links = [
-        { label: content.homepage, url: "https://www.griffon.eu" },
-        { label: content.folder, url: "https://www.griffon.eu/en-en/documentation" },
-        { label: "Instagram", url: "https://www.instagram.com/griffon_international/" },
-        { label: "Facebook", url: "https://www.facebook.com/GriffonInternational/" },
-        { label: "TikTok", url: "https://www.tiktok.com/@griffon_international" },
-        { label: content.parent, url: "https://www.boltonadhesives.com" },
-        { label: content.contact, url: `mailto:info@boltonadhesives.com?subject=${content.subject}`, isContact: true }
-    ];
+    // Vertaal alle elementen
+    document.getElementById('btn-home').innerText = content.home;
+    document.getElementById('btn-folder').innerText = content.folder;
+    document.getElementById('btn-parent').innerText = content.parent;
+    document.getElementById('btn-contact').innerText = content.contact;
+    document.getElementById('form-header').innerText = content.formH;
+    document.getElementById('opt-select').innerText = content.optSelect;
+    document.getElementById('opt-info').innerText = content.optInfo;
+    document.getElementById('opt-call').innerText = content.optCall;
+    document.getElementById('btn-submit').innerText = content.btnSend;
 
-    const container = document.getElementById('links-container');
-
-    links.forEach(link => {
-        const a = document.createElement('a');
-        a.href = link.url;
-        a.className = 'link-button' + (link.isContact ? ' contact-btn' : '');
-        a.innerText = link.label;
-        container.appendChild(a);
-    });
+    function showForm() {
+        document.getElementById('links-menu').style.display = 'none';
+        document.getElementById('contact-form-container').style.display = 'block';
+    }
 </script>
 
 </body>
