@@ -4,85 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Griffon - Professional Solutions</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --griffon-blue: #0054a6;
             --griffon-red: #e30613;
+            --bg-grey: #f2f2f2;
+            --text-dark: #333333;
             --white: #ffffff;
-            --light-grey: #f4f4f4;
-            --dark-grey: #333;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--light-grey);
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-grey);
             margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header zoals op de website */
+        header {
+            width: 100%;
+            background-color: var(--white);
+            padding: 15px 0;
             display: flex;
             justify-content: center;
-            padding: 20px 0;
-            color: var(--dark-grey);
+            border-bottom: 3px solid var(--griffon-blue);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            height: 45px;
+            width: auto;
         }
 
         .container {
             width: 90%;
-            max-width: 400px;
+            max-width: 450px;
+            margin-top: 30px;
+            padding-bottom: 50px;
+        }
+
+        .intro-text {
             text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .header {
-            background-color: var(--white);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .logo {
-            width: 100%;
-            max-width: 220px;
-            height: auto;
-        }
-
-        .link-button {
-            display: block;
-            background-color: var(--white);
-            color: var(--griffon-blue);
+        /* Knoppen in de stijl van Griffon Cards */
+        .link-card {
+            background: var(--white);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            padding: 16px;
-            margin-bottom: 12px;
-            border-radius: 10px;
-            font-weight: bold;
-            border: 2px solid var(--griffon-blue);
-            transition: 0.3s;
+            color: var(--griffon-blue);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--griffon-blue);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        /* Formulier Styling */
+        .link-card:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Accent voor de contact knop */
+        .contact-card {
+            border-left-color: var(--griffon-red);
+            color: var(--griffon-red);
+            margin-top: 25px;
+        }
+
+        /* Formulier styling in Griffon-stijl */
         #contact-form-container {
             background: var(--white);
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 20px;
-            text-align: left;
-            display: none; /* Verborgen tot klik */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            padding: 25px;
+            border-radius: 4px;
+            display: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .form-title {
+        h2 {
             color: var(--griffon-blue);
-            font-weight: bold;
-            margin-bottom: 15px;
-            display: block;
+            font-size: 1.2rem;
+            margin-top: 0;
+            border-bottom: 2px solid var(--bg-grey);
+            padding-bottom: 10px;
         }
 
         input, select, textarea {
             width: 100%;
             padding: 12px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px; /* Voorkomt inzoomen op iOS */
+            border-radius: 2px;
+            font-size: 16px;
+            background-color: #fafafa;
         }
 
         .submit-btn {
@@ -91,99 +122,99 @@
             border: none;
             width: 100%;
             padding: 15px;
-            border-radius: 10px;
-            font-weight: bold;
+            font-weight: 700;
+            text-transform: uppercase;
             cursor: pointer;
+            border-radius: 2px;
         }
 
-        .show-form-btn {
-            background-color: var(--griffon-red);
-            color: white;
-            border: none;
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
+<header>
+    <img src="logo-griffon.svg" alt="Griffon Logo" class="logo" onerror="this.src='https://www.griffon.eu/etc.clientlibs/bolton-adhesives/clientlibs/clientlib-site/resources/images/griffon-logo.svg'">
+</header>
+
 <div class="container">
-    <div class="header">
-        <img src="logo-griffon.svg" alt="Griffon Logo" class="logo">
-    </div>
-    
+    <div id="intro" class="intro-text">Professional Solutions</div>
+
     <div id="links-menu">
-        <a href="https://www.griffon.eu" class="link-button" id="btn-home">Website Homepage</a>
-        <a href="https://www.griffon.eu/en-en/leaflets-catalogs" class="link-button" id="btn-folder">Leaflets & Catalogs</a>
-        <a href="https://www.instagram.com/griffon_international/" class="link-button">Instagram</a>
-        <a href="https://www.facebook.com/GriffonInternational/" class="link-button">Facebook</a>
-        <a href="https://www.tiktok.com/@griffon_international" class="link-button">TikTok</a>
-        <a href="https://www.boltonadhesives.com" class="link-button" id="btn-parent">Bolton Adhesives</a>
+        <a href="https://www.griffon.eu" class="link-card" id="btn-home">Website Homepage</a>
+        <a href="https://www.griffon.eu/en-en/leaflets-catalogs" class="link-card" id="btn-folder">Leaflets & Catalogs</a>
+        <a href="https://www.instagram.com/griffon_international/" class="link-card">Instagram</a>
+        <a href="https://www.facebook.com/GriffonInternational/" class="link-card">Facebook</a>
+        <a href="https://www.tiktok.com/@griffon_international" class="link-card">TikTok</a>
+        <a href="https://www.boltonadhesives.com" class="link-card" id="btn-parent">Bolton Adhesives</a>
         
-        <button class="link-button show-form-btn" id="btn-contact" onclick="showForm()">Contact Me</button>
+        <a href="#" class="link-card contact-card" id="btn-contact" onclick="showForm()">Contact Me</a>
     </div>
 
     <div id="contact-form-container">
-        <span class="form-title" id="form-header">Contactverzoek</span>
+        <h2 id="form-header">Contactverzoek</h2>
         <form action="https://formsubmit.co/info@boltonadhesives.com" method="POST">
-            <input type="text" name="name" placeholder="Naam" autocomplete="name" required>
-            <input type="email" name="email" placeholder="E-mailadres" autocomplete="email" required>
-            <input type="tel" name="phone" placeholder="Telefoonnummer" autocomplete="tel" required>
+            <input type="text" name="name" id="field-name" placeholder="Naam" autocomplete="name" required>
+            <input type="email" name="email" id="field-email" placeholder="E-mail" autocomplete="email" required>
+            <input type="tel" name="phone" id="field-phone" placeholder="Telefoon" autocomplete="tel" required>
             
             <select name="request_type" required>
                 <option value="" disabled selected id="opt-select">Wat wilt u ontvangen?</option>
-                <option value="Information" id="opt-info">Informatie ontvangen</option>
-                <option value="Call-back" id="opt-call">Verzoek om contact</option>
-                <option value="Sample" id="opt-sample">Productmonster aanvragen</option>
+                <option value="Information" id="opt-info">Informatie</option>
+                <option value="Call-back" id="opt-call">Contactverzoek</option>
             </select>
             
-            <textarea name="message" rows="4" placeholder="Uw bericht..."></textarea>
+            <textarea name="message" rows="3" placeholder="Bericht..."></textarea>
             
-            <input type="hidden" name="_next" value="window.location.href">
             <button type="submit" class="submit-btn" id="btn-submit">Verzenden</button>
         </form>
     </div>
+
+    <footer>
+        © <script>document.write(new Date().getFullYear())</script> Bolton Adhesives
+    </footer>
 </div>
 
 <script>
     const translations = {
         nl: {
+            intro: "Professionele Oplossingen",
             home: "Website Homepage",
             folder: "Folders & Catalogi",
             parent: "Bolton Adhesives",
             contact: "Neem contact met mij op",
-            formH: "Hoe kunnen we u helpen?",
+            formH: "Contactverzoek",
             optSelect: "Maak een keuze...",
             optInfo: "Informatie ontvangen",
             optCall: "Verzoek om contact",
-            btnSend: "Verstuur aanvraag"
+            btnSend: "Verstuur aanvraag",
+            pName: "Naam", pEmail: "E-mailadres", pPhone: "Telefoonnummer"
         },
         en: {
+            intro: "Professional Solutions",
             home: "Website Homepage",
             folder: "Leaflets & Catalogs",
             parent: "Bolton Adhesives",
             contact: "Contact me",
-            formH: "How can we help you?",
+            formH: "Contact Request",
             optSelect: "Please select...",
             optInfo: "Receive information",
             optCall: "Request a call-back",
-            btnSend: "Send request"
-        },
-        de: {
-            home: "Website Startseite",
-            folder: "Prospekte & Kataloge",
-            parent: "Bolton Adhesives",
-            contact: "Kontaktieren Sie mich",
-            formH: "Wie können wir helfen?",
-            optSelect: "Bitte wählen...",
-            optInfo: "Informationen erhalten",
-            optCall: "Rückrufwunsch",
-            btnSend: "Anfrage senden"
+            btnSend: "Send request",
+            pName: "Name", pEmail: "Email", pPhone: "Phone number"
         }
     };
 
     const userLang = navigator.language.substring(0, 2);
     const content = translations[userLang] || translations.en;
 
-    // Vertaal alle elementen
+    // Vertaal elementen
+    document.getElementById('intro').innerText = content.intro;
     document.getElementById('btn-home').innerText = content.home;
     document.getElementById('btn-folder').innerText = content.folder;
     document.getElementById('btn-parent').innerText = content.parent;
@@ -193,9 +224,15 @@
     document.getElementById('opt-info').innerText = content.optInfo;
     document.getElementById('opt-call').innerText = content.optCall;
     document.getElementById('btn-submit').innerText = content.btnSend;
+    
+    // Placeholder vertalingen
+    document.getElementById('field-name').placeholder = content.pName;
+    document.getElementById('field-email').placeholder = content.pEmail;
+    document.getElementById('field-phone').placeholder = content.pPhone;
 
     function showForm() {
         document.getElementById('links-menu').style.display = 'none';
+        document.getElementById('intro').style.display = 'none';
         document.getElementById('contact-form-container').style.display = 'block';
     }
 </script>
